@@ -1,6 +1,6 @@
 package com.project.cinema.models;
 
-public class Seat {
+public class Seat implements Bookable {
     private int seatNumber;
     private boolean isReserved;
 
@@ -17,7 +17,9 @@ public class Seat {
         return isReserved;
     }
 
+    @Override
     public void reserve(){
         this.isReserved = true;
+        System.out.println("Seat " + seatNumber + " has been reserved.");
     }
 }
