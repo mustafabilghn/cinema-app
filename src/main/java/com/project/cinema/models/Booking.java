@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Booking {
 
-    private static int bookingCounter = 1; 
+    private static int bookingCounter = 1;
 
     private int bookingId;
     private Customer customer;
@@ -57,12 +57,25 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking ID: " + bookingId +
-                "\nCustomer: " + customer.getName() +
-                "\nMovie: " + movie.getTitle() +
-                "\nShowTime: " + showTime.getTime() +
-                "\nSeats: " + reservedSeats +
-                "\nBooking Time: " + bookingTime +
-                "\nTotal Price: " + getTotalPrice();
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\n========= BOOKING SUMMARY =========\n");
+        sb.append("Booking ID : ").append(bookingId).append("\n");
+        sb.append("Customer   : ").append(customer.getName()).append("\n");
+        sb.append("Movie      : ").append(movie.getTitle()).append("\n");
+        sb.append("ShowTime   : ").append(showTime.getTime()).append("\n");
+        sb.append("Seats      : ");
+
+        for (Seat seat : reservedSeats) {
+            sb.append(seat.getSeatNumber()).append(" ");
+        }
+
+        sb.append("\nDate       : ")
+                .append(bookingTime).append("\n");
+        sb.append("Total      : ")
+                .append(getTotalPrice()).append(" TL\n");
+        sb.append("==================================\n");
+
+        return sb.toString();
     }
 }

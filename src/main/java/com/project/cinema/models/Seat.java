@@ -22,4 +22,9 @@ public class Seat implements Bookable {
         this.isReserved = true;
         System.out.println("Seat " + seatNumber + " has been reserved.");
     }
+
+    @Override
+    public String toString(){
+        return "Seat " + seatNumber;
+    }
 }
