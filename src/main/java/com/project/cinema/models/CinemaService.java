@@ -95,4 +95,8 @@ public class CinemaService {
             System.out.println("----------------------------");
         }
     }
+
+    public List<Booking> getBookings(){
+        return bookings;
+    }
 }
