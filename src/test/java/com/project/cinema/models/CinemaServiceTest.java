@@ -19,4 +19,17 @@ public class CinemaServiceTest {
 
         assertEquals(1, cinemaService.getBookings().size(), "There should be one booking created.");
     }
+
+    @Test
+    void reserveSeat_shouldNotCreateBookingIfSeatAlreadyReserved() {
+        CinemaService cinemaService = new CinemaService();
+        Customer customer = new Customer("John Doe");
+        Movie movie = new TwoDMovie("Inception", 148, "Sci-Fi", 8.8);
+        ShowTime showTime = new ShowTime(movie, "18:00", 10);
+
+        cinemaService.reserveSeat(customer, showTime, 3);
+        cinemaService.reserveSeat(customer, showTime, 3);
+
+        assertEquals(1, cinemaService.getBookings().size(), "There should be only one booking created.");
+    }
 }
